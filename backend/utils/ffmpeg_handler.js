@@ -69,7 +69,7 @@ exports.startCapture = async (matchName) => {
         const outputPathCam1 = path.join(matchBufferDir, 'cam1.mp4');
         const ffmpegArgsCam1 = [
             '-f', 'mjpeg',
-            '-i', 'http://172.16.125.249:8080/video', // Camera 1 stream URL
+            '-i', 'http://172.16.126.202:8080/video', // Camera 1 stream URL
             '-c:v', 'libx264',
             '-profile:v', 'baseline',
             '-level', '3.0',
@@ -85,7 +85,7 @@ exports.startCapture = async (matchName) => {
         const outputPathCam2 = path.join(matchBufferDir, 'cam2.mp4');
         const ffmpegArgsCam2 = [
             '-f', 'mjpeg',
-            '-i', 'http://172.16.124.237:8080/video',  // Camera 2 stream URL
+            '-i', 'http://172.16.126.80:8080/video',  // Camera 2 stream URL
             '-c:v', 'libx264',
             '-profile:v', 'baseline',
             '-level', '3.0',
