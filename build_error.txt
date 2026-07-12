@@ -1,0 +1,48 @@
+Launching lib\main.dart on A142 in debug mode...
+Running Gradle task 'assembleDebug'...                          
+Warning: The plugin camera_android requires Android SDK version 36 or higher.
+For more information about build configuration, see https://flutter.dev/to/review-gradle-config.
+Warning: The plugin flutter_plugin_android_lifecycle requires Android SDK version 35 or higher.
+For more information about build configuration, see https://flutter.dev/to/review-gradle-config.
+Warning: The plugin path_provider_android requires Android SDK version 35 or higher.
+For more information about build configuration, see https://flutter.dev/to/review-gradle-config.
+Warning: The plugin shared_preferences_android requires Android SDK version 35 or higher.
+For more information about build configuration, see https://flutter.dev/to/review-gradle-config.
+Warning: The plugin video_player_android requires Android SDK version 35 or higher.
+For more information about build configuration, see https://flutter.dev/to/review-gradle-config.
+Your project is configured to compile against Android SDK 34, but the following plugin(s) require to be compiled against a higher Android SDK version:
+- camera_android compiles against Android SDK 36
+- flutter_plugin_android_lifecycle compiles against Android SDK 35
+- path_provider_android compiles against Android SDK 35
+- shared_preferences_android compiles against Android SDK 35
+- video_player_android compiles against Android SDK 35
+Fix this issue by compiling against the highest Android SDK version (they are backward compatible).
+Add the following to D:\cloud\cricket_og_single_cam\cricket2\android\app\build.gradle.kts:
+
+    android {
+        compileSdk = 36
+        ...
+    }
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:checkDebugAarMetadata'.
+> Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
+   > Could not find com.arthenica:ffmpeg-kit-min-gpl:6.0-2.
+     Searched in the following locations:
+       - https://dl.google.com/dl/android/maven2/com/arthenica/ffmpeg-kit-min-gpl/6.0-2/ffmpeg-kit-min-gpl-6.0-2.pom
+       - https://repo.maven.apache.org/maven2/com/arthenica/ffmpeg-kit-min-gpl/6.0-2/ffmpeg-kit-min-gpl-6.0-2.pom
+       - https://storage.googleapis.com/download.flutter.io/com/arthenica/ffmpeg-kit-min-gpl/6.0-2/ffmpeg-kit-min-gpl-6.0-2.pom
+     Required by:
+         project :app > project :ffmpeg_kit_flutter_min_gpl
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 4s
+Running Gradle task 'assembleDebug'...                              4.7s
+Error: Gradle task assembleDebug failed with exit code 1

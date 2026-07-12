@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Network Security Config — Smart Umpire App
+    ============================================
+    Allows plain-text (HTTP / RTSP) connections on the local network so the
+    app can reach IP cameras without TLS overhead. TLS would add a full
+    handshake round-trip (~100–300 ms) every time the preview stream or
+    FFmpeg capture session connects.
+
+    This config permits cleartext only for private/LAN address ranges:
+      • 192.168.0.0/16  (home / office routers)
+      • 10.0.0.0/8      (corporate / hotspot)
+      • 172.16.0.0/12   (Docker, VPN ranges)
+
+    All other destinations (e.g. cloud APIs) still require HTTPS.
+-->
+<network-security-config>
+
+    <!-- Allow cleartext to private LAN ranges (IP cameras live here) -->
+    <domain-config cleartextTrafficPermitted="true">
+        <!-- Class C private range — most home/office cameras -->
+        <domain includeSubdomains="false">192.168.0.0</domain>
+        <domain includeSubdomains="false">192.168.1.0</domain>
+        <!-- Class A private range — corporate / hotspot tethering -->
+        <domain includeSubdomains="false">10.0.0.0</domain>
+        <!-- Class B private range — VPNs, Docker bridges -->
+        <domain includeSubdomains="false">172.16.0.0</domain>
+    </domain-config>
+
+    <!-- Base config: all other traffic must be HTTPS -->
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+
+</network-security-config>
